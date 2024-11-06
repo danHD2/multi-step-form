@@ -5,6 +5,10 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <>
+    <div className='bg-magnolia h-screen grid place-content-center font-[Ubuntu]'>
     <App />
+    </div>
+    </>
   </StrictMode>,
 )
