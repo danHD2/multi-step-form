@@ -1,25 +1,27 @@
+const legendInfo = [{
+    'number': 1,
+    'step': "STEP 1",
+    'title': "YOUR INFO"
+},{
+    'number': 2,
+    'step': "STEP 2",
+    'title': "SELECT PLAN"
+},{
+    'number': 3,
+    'step': "STEP 3",
+    'title': "ADD-ONS"
+},{
+    'number': 4,
+    'step': "STEP 4",
+    'title': "SUMMARY"
+}, 
+]
+
 function Legend({chapter, setChapter}) {
-    const legendInfo = [{
-        'number': 1,
-        'step': "STEP 1",
-        'title': "YOUR INFO"
-    },{
-        'number': 2,
-        'step': "STEP 2",
-        'title': "SELECT PLAN"
-    },{
-        'number': 3,
-        'step': "STEP 3",
-        'title': "ADD-ONS"
-    },{
-        'number': 4,
-        'step': "STEP 4",
-        'title': "SUMMARY"
-    }, 
-    ]
+
 
     return (
-        <div className="bg-legend-desktop w-60 p-10 text-sm text-white">
+        <div className="bg-legend-desktop select-none w-[17rem] p-10 text-sm text-white rounded-lg">
             {legendInfo.map((chapters)=>{
                     const selected = () => {                     
                         if (chapter === chapters.number) {
