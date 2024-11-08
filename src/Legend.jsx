@@ -17,22 +17,20 @@ const legendInfo = [{
 }, 
 ]
 
-function Legend({chapter, setChapter}) {
+function Legend({chapter, setChapter, setSuccess}) {
+
 
 
     return (
-        <div className="bg-legend-desktop select-none w-[17rem] p-10 text-sm text-white rounded-lg">
+        <div className="bg-legend-desktop select-none h-[566px] w-[17rem] p-10 text-sm text-white rounded-lg">
             {legendInfo.map((chapters)=>{
-                    const selected = () => {                     
-                        if (chapter === chapters.number) {
-                            return "bg-lightBlue border-0 text-black"
-                        } else {return ''}
-                    }
+                    
                     function changeChapter() {
                         setChapter(chapters.number)
+                        setSuccess(false);
                     }
                 return <div key={chapters.number} onClick={(e) => changeChapter(e)} className="flex items-center mb-10 cursor-pointer">
-                    <div className={`rounded-full mr-3 border flex items-center justify-center ${selected()}`} style={{height: "40px", width: "40px"}}>{chapters.number}</div>
+                    <div className={`rounded-full mr-3 border flex items-center justify-center ${chapter === chapters.number ? "bg-lightBlue border-0 text-black" : ""}`} style={{height: "40px", width: "40px"}}>{chapters.number}</div>
                     <div>
                     <p className="font-extralight text-lightGray">{chapters.step}</p>
                     <p className="font-semibold">{chapters.title}</p>

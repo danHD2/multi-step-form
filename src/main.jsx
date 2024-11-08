@@ -6,7 +6,7 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <>
-    <div className='bg-magnolia h-screen font-[Ubuntu]'>
+    <div className='bg-magnolia h-screen font-[Ubuntu] flex justify-center items-center'>
     <App />
     </div>
     </>
