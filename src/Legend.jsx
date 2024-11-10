@@ -17,7 +17,7 @@ const legendInfo = [{
 }, 
 ]
 
-function Legend({chapter, setChapter, setSuccess}) {
+function Legend({everything, setEverything}) {
 
 
 
@@ -26,11 +26,14 @@ function Legend({chapter, setChapter, setSuccess}) {
             {legendInfo.map((chapters)=>{
                     
                     function changeChapter() {
-                        setChapter(chapters.number)
-                        setSuccess(false);
+                        setEverything({
+                            ...everything,
+                            chapter: chapters.number,
+                            success: false
+                        })
                     }
                 return <div key={chapters.number} onClick={(e) => changeChapter(e)} className="flex items-center mb-10 cursor-pointer">
-                    <div className={`rounded-full mr-3 border flex items-center font-bold justify-center ${chapter === chapters.number ? "bg-lightBlue border-0 text-black" : ""}`} style={{height: "40px", width: "40px"}}>{chapters.number}</div>
+                    <div className={`rounded-full mr-3 border flex items-center font-bold justify-center ${everything.chapter === chapters.number ? "bg-lightBlue border-0 text-black" : ""}`} style={{height: "40px", width: "40px"}}>{chapters.number}</div>
                     <div>
                     <p className="font-extralight text-lightGray">{chapters.step}</p>
                     <p className="font-semibold">{chapters.title}</p>

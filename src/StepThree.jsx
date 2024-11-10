@@ -1,6 +1,6 @@
 
 
-function StepThree({monthly, service, setService, storage, setStorage, profile, setProfile}) {
+function StepThree({everything, setEverything}) {
     const addOnData = [
         {
             title: "Online service",
@@ -8,24 +8,21 @@ function StepThree({monthly, service, setService, storage, setStorage, profile, 
             monthlyPrice: "+$1/mo",
             yearlyPrice: "+$10/yr",
             id: 1,
-            state: service,
-            setState: setService
+            state: everything.service
         },{
             title: "Larger storage",
             desc: "Extra 1TB of cloud save",
             monthlyPrice: "+$2/mo",
             yearlyPrice: "+$20/yr",
             id: 2,
-            state: storage,
-            setState: setStorage
+            state: everything.storage
         },{
             title: "Customizable profile",
             desc: "Custom theme on your profile",
             monthlyPrice: "+$2/mo",
             yearlyPrice: "+$20/yr",
             id: 3,
-            state: profile,
-            setState: setProfile
+            state: everything.profile
         },
         
     ]    
@@ -35,8 +32,10 @@ function StepThree({monthly, service, setService, storage, setStorage, profile, 
         <p className="text-sm text-coolGray pt-2">Add-ons help enchance your gaming experience.</p>
         <div className="mt-10">
         {addOnData.map((item) => {
+            const myItem = item.state
+            const myValue = !item.state.value
             return (
-                <div key={item.id} onClick={(e)=>{item.setState(!item.state)}} className={`flex border items-center select-none cursor-pointer justify-between flex-row mb-4 rounded-lg px-5 py-4 ${item.state ? "border-purplishBlue bg-alabaster" : "border-coolGray"}`}>
+                <div key={item.id} onClick={(e)=>{setEverything({...everything, myItem: myValue})}} className={`flex border items-center select-none cursor-pointer justify-between flex-row mb-4 rounded-lg px-5 py-4 ${item.state ? "border-purplishBlue bg-alabaster" : "border-coolGray"}`}>
                     <div className="flex">
                         <input type="checkbox" checked={item.state} readOnly className="mr-5 w-4 rounded-lg cursor-pointer accent-purplishBlue"/>
                         <div className="flex flex-col">
@@ -44,7 +43,7 @@ function StepThree({monthly, service, setService, storage, setStorage, profile, 
                             <p className="text-sm text-coolGray">{item.desc}</p>
                         </div>
                     </div>
-                    {!monthly ? <p className="text-purplishBlue">{item.monthlyPrice}</p> : <p className="text-purplishBlue">{item.yearlyPrice}</p>}
+                    {!everything.monthly ? <p className="text-purplishBlue">{item.monthlyPrice}</p> : <p className="text-purplishBlue">{item.yearlyPrice}</p>}
                 </div>
             )
         })}

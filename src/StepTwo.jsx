@@ -29,7 +29,7 @@ const planData = [
     },
 ]
 
-function StepTwo({monthly, setMonthly, plan, setPlan}) {
+function StepTwo({everything, setEverything}) {
 
    
     
@@ -40,12 +40,12 @@ function StepTwo({monthly, setMonthly, plan, setPlan}) {
             <div className="flex justify-between my-10">
             {planData.map((option) => {
                 return (
-                    <div onClick={(e) => {setPlan(option.title)}} className={`h-44 select-none w-36 cursor-pointer flex flex-col p-5 mr-4 last:mr-0 justify-between border border-lightGray rounded-lg ${plan === option.title ? "border border-purplishBlue bg-alabaster" : ""}`} key={option.id}>
+                    <div onClick={(e) => {setEverything({...everything, plan: option.title})}} className={`h-44 select-none w-36 cursor-pointer flex flex-col p-5 mr-4 last:mr-0 justify-between border border-lightGray rounded-lg ${everything.plan === option.title ? "border border-purplishBlue bg-alabaster" : ""}`} key={option.id}>
                         <img className='w-10' src={option.img} alt={option.title}></img>
                         <div>
                             <h2 className='text-marineBlue font-semibold'>{option.title}</h2>
-                            <p className='text-sm text-coolGray py-1'>{!monthly ? option.monthPrice : option.yearPrice}</p>
-                            {monthly ? <p className='text-xs text-marineBlue'>{option.bonus}</p> : ''}
+                            <p className='text-sm text-coolGray py-1'>{!everything.monthly ? option.monthPrice : option.yearPrice}</p>
+                            {everything.monthly ? <p className='text-xs text-marineBlue'>{option.bonus}</p> : ''}
                         </div>
                     </div>
                 )
@@ -56,10 +56,10 @@ function StepTwo({monthly, setMonthly, plan, setPlan}) {
 
                <div>
                <label className="inline-flex items-center cursor-pointer select-none">
-                <input type="checkbox" checked={monthly} onChange={()=>{setMonthly(!monthly)}} className="sr-only peer"/>
-                <span className={`mr-5 text-sm ${!monthly ? "text-marineBlue font-bold" : "text-coolGray"}`}>Monthly</span>
+                <input type="checkbox" checked={everything.monthly} onChange={()=>{setEverything({...everything, monthly: !everything.monthly})}} className="sr-only peer"/>
+                <span className={`mr-5 text-sm ${!everything.monthly ? "text-marineBlue font-bold" : "text-coolGray"}`}>Monthly</span>
                 <div className="relative w-11 h-6 bg-marineBlue peer-focus:outline-none rounded-full peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[4px] after:start-[6px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
-                <span className={`ms-5 text-sm ${monthly ? "text-marineBlue font-bold" : "text-coolGray"}`}>Yearly</span>
+                <span className={`ms-5 text-sm ${everything.monthly ? "text-marineBlue font-bold" : "text-coolGray"}`}>Yearly</span>
                 </label>
                </div>
 
