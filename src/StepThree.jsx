@@ -32,10 +32,26 @@ function StepThree({everything, setEverything}) {
         <p className="text-sm text-coolGray pt-2">Add-ons help enchance your gaming experience.</p>
         <div className="mt-10">
         {addOnData.map((item) => {
-            const myItem = item.state
-            const myValue = !item.state.value
+            function handleClick(e) {
+                if (item.id === 1) {
+                    setEverything({
+                        ...everything,
+                        service: !everything.service
+                    })
+                } else if (item.id === 2) {
+                    setEverything({
+                        ...everything,
+                        storage: !everything.storage
+                    })
+                } else if (item.id === 3) {
+                    setEverything({
+                        ...everything,
+                        profile: !everything.profile
+                    })
+                }
+            }
             return (
-                <div key={item.id} onClick={(e)=>{setEverything({...everything, myItem: myValue})}} className={`flex border items-center select-none cursor-pointer justify-between flex-row mb-4 rounded-lg px-5 py-4 ${item.state ? "border-purplishBlue bg-alabaster" : "border-coolGray"}`}>
+                <div key={item.id} onClick={(e)=>{handleClick()}} className={`flex border items-center select-none cursor-pointer justify-between flex-row mb-4 rounded-lg px-5 py-4 ${item.state ? "border-purplishBlue bg-alabaster" : "border-coolGray"}`}>
                     <div className="flex">
                         <input type="checkbox" checked={item.state} readOnly className="mr-5 w-4 rounded-lg cursor-pointer accent-purplishBlue"/>
                         <div className="flex flex-col">
