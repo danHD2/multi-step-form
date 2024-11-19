@@ -46,7 +46,7 @@ function Navigator({ everything, setEverything }) {
     }
   }
   return (
-    <div className="flex justify-between w-full select-none">
+    <div className="flex justify-between md:p-0 w-full md:relative fixed bottom-[0px] p-5 bg-white right-[0px] md:right-0 md:bottom-0 select-none">
       <button
         onClick={() => decrement()}
         className={`text-coolGray font-semibold hover:text-marineBlue transition-all ${

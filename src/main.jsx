@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <>
-    <div className='bg-magnolia h-screen font-[Ubuntu] flex justify-center items-center'>
-    <App />
-    </div>
+      <div className="bg-magnolia h-screen font-[Ubuntu] flex justify-center md:items-center">
+        <App />
+      </div>
     </>
-  </StrictMode>,
-)
+  </StrictMode>
+);
