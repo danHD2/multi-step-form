@@ -15,6 +15,7 @@ function App() {
     service: false,
     storage: false,
     profile: false,
+    total: 9,
     success: false,
     errors: {
       name: false,
@@ -26,7 +27,24 @@ function App() {
       email: false,
       phone: false,
     },
+    monthlyPrices: {
+      arcade: 9,
+      advanced: 12,
+      pro: 15,
+      service: 1,
+      storage: 2,
+      profile: 2,
+    },
+    yearlyPrices: {
+      arcade: 90,
+      advanced: 120,
+      pro: 150,
+      service: 10,
+      storage: 20,
+      profile: 20,
+    },
   });
+
   return (
     <>
       <div className="md:bg-white  max-h-screen w-full md:max-h-[650px] md:p-5 md:rounded-xl flex items-center md:items-stretch flex-col md:flex-row md:w-[900px]">
