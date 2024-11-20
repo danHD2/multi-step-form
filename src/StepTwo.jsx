@@ -31,35 +31,41 @@ const planData = [
 
 function StepTwo({ everything, setEverything }) {
   return (
-    <div className="flex flex-col mb-10">
+    <div className="flex flex-col md:mb-10">
       <h1 className="text-2xl font-bold text-marineBlue">Select your plan</h1>
-      <p className="text-sm text-coolGray pt-2">
+      <p className="text-md text-coolGray pt-2">
         You have the option of monthly or yearly billing.
       </p>
-      <div className="flex justify-between my-10">
+      <div className="flex flex-col md:flex-row justify-between mt-5 md:my-10">
         {planData.map((option) => {
           return (
             <div
               onClick={(e) => {
                 setEverything({ ...everything, plan: option.title });
               }}
-              className={`h-44 select-none w-36 cursor-pointer flex flex-col p-5 mr-4 last:mr-0 justify-between border border-lightGray hover:border-purplishBlue transition-all rounded-lg ${
+              className={`md:h-44 select-none md:w-36 cursor-pointer flex md:flex-col mb-4 md:mb-0 p-5 md:mr-4 last:mr-0 md:justify-between border border-lightGray hover:border-purplishBlue transition-all rounded-lg ${
                 everything.plan === option.title
                   ? "border border-purplishBlue bg-alabaster"
                   : ""
               }`}
               key={option.id}
             >
-              <img className="w-10" src={option.img} alt={option.title}></img>
+              <img
+                className="w-10 mr-3 md:mr-0"
+                src={option.img}
+                alt={option.title}
+              ></img>
               <div>
                 <h2 className="text-marineBlue font-semibold">
                   {option.title}
                 </h2>
-                <p className="text-sm text-coolGray py-1">
+                <p className="text-sm text-coolGray md:py-1">
                   {!everything.monthly ? option.monthPrice : option.yearPrice}
                 </p>
                 {everything.monthly ? (
-                  <p className="text-xs text-marineBlue">{option.bonus}</p>
+                  <p className="text-xs text-marineBlue font-bold pt-1 md:pt-0">
+                    {option.bonus}
+                  </p>
                 ) : (
                   ""
                 )}
@@ -70,7 +76,7 @@ function StepTwo({ everything, setEverything }) {
       </div>
       <div className="bg-alabaster flex justify-center">
         <div>
-          <label className="inline-flex items-center cursor-pointer select-none">
+          <label className="inline-flex p-2.5 items-center cursor-pointer select-none">
             <input
               type="checkbox"
               checked={everything.monthly}

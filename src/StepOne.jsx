@@ -2,9 +2,9 @@ function StepOne({ everything, setEverything }) {
   const { name, email, phone, errors } = everything;
 
   return (
-    <div className="flex flex-col md:mb-10">
+    <div className="flex flex-col md:mb-2">
       <h1 className="text-2xl font-bold text-marineBlue">Personal info</h1>
-      <p className="text-sm text-coolGray pt-2">
+      <p className="text-md text-coolGray pt-2">
         Please provide your name, email address, and phone number.
       </p>
       <form className="flex flex-col mt-8">

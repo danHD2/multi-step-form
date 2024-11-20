@@ -29,7 +29,7 @@ function App() {
   });
   return (
     <>
-      <div className="md:bg-white  max-h-screen w-full md:max-h-[650px] md:p-5 md:rounded-xl flex items-center flex-col md:flex-row md:w-[900px]">
+      <div className="md:bg-white  max-h-screen w-full md:max-h-[650px] md:p-5 md:rounded-xl flex items-center md:items-stretch flex-col md:flex-row md:w-[900px]">
         <Legend everything={everything} setEverything={setEverything} />
         <div className="flex flex-col rounded-lg relative bg-white md:top-0 -top-10 justify-between w-11/12 md:px-20 md:py-10 p-5 md:p-0 shadow-xl md:shadow-none md:w-full md:max-w-[590px]">
           <div className="flex flex-col">

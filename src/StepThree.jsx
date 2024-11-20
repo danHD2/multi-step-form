@@ -26,12 +26,12 @@ function StepThree({ everything, setEverything }) {
     },
   ];
   return (
-    <div className="flex flex-col mb-10">
+    <div className="flex flex-col md:mb-10">
       <h1 className="text-2xl font-bold text-marineBlue">Pick add-ons</h1>
-      <p className="text-sm text-coolGray pt-2">
+      <p className="text-md text-coolGray pt-2">
         Add-ons help enchance your gaming experience.
       </p>
-      <div className="mt-10">
+      <div className="mt-5 md:mt-10">
         {addOnData.map((item) => {
           function handleClick(e) {
             if (item.id === 1) {
