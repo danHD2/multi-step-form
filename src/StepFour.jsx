@@ -3,8 +3,56 @@ import Separator from "./Separator";
 import Service from "./Service";
 import Storage from "./Storage";
 import Profile from "./Profile";
+import { useEffect } from "react";
 
 function StepFour({ everything, setEverything }) {
+  useEffect(() => {
+    let total = 0;
+    if (!everything.monthly) {
+      if (everything.plan === "Arcade") {
+        total += everything.monthlyPrices.arcade;
+      }
+      if (everything.plan === "Advanced") {
+        total += everything.monthlyPrices.advanced;
+      }
+      if (everything.plan === "Pro") {
+        total += everything.monthlyPrices.pro;
+      }
+      if (everything.service) {
+        total += everything.monthlyPrices.service;
+      }
+      if (everything.storage) {
+        total += everything.monthlyPrices.storage;
+      }
+      if (everything.profile) {
+        total += everything.monthlyPrices.profile;
+      }
+    } else if (everything.monthly) {
+      if (everything.plan === "Arcade") {
+        total += everything.yearlyPrices.arcade;
+      }
+      if (everything.plan === "Advanced") {
+        total += everything.yearlyPrices.advanced;
+      }
+      if (everything.plan === "Pro") {
+        total += everything.yearlyPrices.pro;
+      }
+      if (everything.service) {
+        total += everything.yearlyPrices.service;
+      }
+      if (everything.storage) {
+        total += everything.yearlyPrices.storage;
+      }
+      if (everything.profile) {
+        total += everything.yearlyPrices.profile;
+      }
+    }
+    setEverything({
+      ...everything,
+      total: total,
+    });
+  }, []);
+
   function identifyPlan(everything) {
     if (everything.plan === "Arcade") {
       return everything.monthly

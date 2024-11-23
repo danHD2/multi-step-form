@@ -13,12 +13,9 @@ function App() {
     monthly: false,
     plan: "Arcade",
     service: false,
-    serviceAdded: false,
     storage: false,
-    storageAdded: false,
     profile: false,
-    profileAdded: false,
-    total: 9,
+    total: 0,
     success: false,
     errors: {
       name: false,

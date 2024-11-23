@@ -1,30 +1,4 @@
-import { useEffect } from "react";
-
-function Storage({ everything, setEverything }) {
-  useEffect(() => {
-    const storageTotalUpdate = everything.monthly
-      ? everything.yearlyPrices.storage
-      : everything.monthlyPrices.storage;
-
-    if (everything.storage) {
-      setEverything((prevState) => ({
-        ...prevState,
-        total: prevState.total + storageTotalUpdate,
-        storageAdded: true,
-      }));
-      console.log("storage added");
-      console.log(everything.storageAdded);
-    } else if (!everything.storage && everything.storageAdded) {
-      setEverything((prevState) => ({
-        ...prevState,
-        total: prevState.total - storageTotalUpdate,
-        storageAdded: false,
-      }));
-      console.log("storage removed");
-      console.log(everything.storageAdded);
-    }
-  }, [setEverything]);
-
+function Storage({ everything }) {
   if (!everything.storage) return null;
 
   return (

@@ -31,30 +31,6 @@ const planData = [
 ];
 
 function StepTwo({ everything, setEverything }) {
-  function identifyPlan(everything) {
-    if (everything.plan === "Arcade") {
-      return everything.monthly
-        ? everything.yearlyPrices.arcade
-        : everything.monthlyPrices.arcade;
-    } else if (everything.plan === "Advanced") {
-      return everything.monthly
-        ? everything.yearlyPrices.advanced
-        : everything.monthlyPrices.advanced;
-    } else if (everything.plan === "Pro") {
-      return everything.monthly
-        ? everything.yearlyPrices.pro
-        : everything.monthlyPrices.pro;
-    }
-  }
-
-  useEffect(() => {
-    const basePlanPrice = identifyPlan(everything);
-    setEverything((prevState) => ({
-      ...prevState,
-      total: basePlanPrice,
-    }));
-  }, [everything.plan, everything.monthly]);
-
   return (
     <div className="flex flex-col md:mb-10">
       <h1 className="text-2xl font-bold text-marineBlue">Select your plan</h1>

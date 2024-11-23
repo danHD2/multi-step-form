@@ -1,30 +1,4 @@
-import { useEffect } from "react";
-
-function Profile({ everything, setEverything }) {
-  useEffect(() => {
-    const profileTotalUpdate = everything.monthly
-      ? everything.yearlyPrices.profile
-      : everything.monthlyPrices.profile;
-
-    if (everything.profile) {
-      setEverything((prevState) => ({
-        ...prevState,
-        total: prevState.total + profileTotalUpdate,
-        profileAdded: true,
-      }));
-      console.log("profile added");
-      console.log(everything.profileAdded);
-    } else if (!everything.profile && everything.profileAdded) {
-      setEverything((prevState) => ({
-        ...prevState,
-        total: prevState.total - profileTotalUpdate,
-        profileAdded: false,
-      }));
-      console.log("profile removed");
-      console.log(everything.profileAdded);
-    }
-  }, [setEverything]);
-
+function Profile({ everything }) {
   if (!everything.profile) return null;
 
   return (
