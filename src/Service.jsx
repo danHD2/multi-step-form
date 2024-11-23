@@ -1,22 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function Service({ everything, setEverything }) {
-  const [updated, setUpdated] = useState(false);
-
   useEffect(() => {
-    if (everything.service && !updated) {
-      const serviceTotalUpdate = everything.monthly
-        ? everything.yearlyPrices.service
-        : everything.monthlyPrices.service;
+    const serviceTotalUpdate = everything.monthly
+      ? everything.yearlyPrices.service
+      : everything.monthlyPrices.service;
 
+    if (everything.service) {
       setEverything((prevState) => ({
         ...prevState,
         total: prevState.total + serviceTotalUpdate,
+        serviceAdded: true,
       }));
-
-      setUpdated(true);
+      console.log("service added");
+      console.log(everything.serviceAdded);
+    } else if (!everything.service && everything.serviceAdded) {
+      setEverything((prevState) => ({
+        ...prevState,
+        total: prevState.total - serviceTotalUpdate,
+        serviceAdded: false,
+      }));
+      console.log("service removed");
     }
-  }, [everything.service, everything.monthly, updated, setEverything]);
+  }, [setEverything]);
 
   if (!everything.service) return null;
 
